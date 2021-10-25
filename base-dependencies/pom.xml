@@ -4,13 +4,13 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.tenacity.base</groupId>
-  <artifactId>tenacity-base-dependencies</artifactId>
+  <groupId>com.bubble.dependencies</groupId>
+  <artifactId>base-dependencies</artifactId>
   <packaging>pom</packaging>
-  <version>${tenacity-cloud-platform.version}</version>
+  <version>1.0.0.SNAPSHOT</version>
 
   <!-- 管理私服nexus-releases、nexus-snapshots地址 -->
- <!-- <distributionManagement>
+  <!--<distributionManagement>
     <repository>
       <id>nexus-releases</id>
       <name>Nexus Releases Repository</name>
@@ -40,11 +40,9 @@
   </repositories>-->
 
   <properties>
-    <!-- 同一个git仓库的建议用一个 -->
-    <tenacity-cloud-platform.version>1.0.0.RELEASE</tenacity-cloud-platform.version>
   </properties>
 
-  <!-- 第三方的jar版本管理 -->
+  <!-- 自己开发的jar版本管理 -->
   <dependencyManagement>
     <dependencies>
 
