@@ -6,17 +6,18 @@
     <groupId>com.bubble.dependencies</groupId>
     <artifactId>project-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0.SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <properties>
         <!-- 依赖版本 -->
-        <base-dependency.version>1.0.0.SNAPSHOT</base-dependency.version>
-        <third-dependency.version>1.0.0.SNAPSHOT</third-dependency.version>
+        <base-dependency.version>1.0.0-SNAPSHOT</base-dependency.version>
+        <third-dependency.version>1.0.0-SNAPSHOT</third-dependency.version>
 
         <!--springboot springcloudAlibaba-->
         <spring-cloud-alibaba-dependencies.version>2.2.5.RELEASE</spring-cloud-alibaba-dependencies.version>
         <spring-cloud-dependencies.version>Hoxton.SR8</spring-cloud-dependencies.version>
         <shared-resources.version>1.0.0-SNAPSHOT</shared-resources.version>
+
     </properties>
 
     <dependencyManagement>
@@ -82,88 +83,7 @@
             </resource>
         </resources>
 
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <!-- 远程配置共享 -->
-                    <artifactId>maven-remote-resources-plugin</artifactId>
-                    <version>${maven-remote-resources-plugin.version}</version>
-                    <configuration>
-                        <resourceBundles>
-                            <resourceBundle>com.tenacity:shared-resources:${shared-resources.version}</resourceBundle>
-                        </resourceBundles>
-                        <outputDirectory>${project.build.outputDirectory}</outputDirectory>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>process</goal>
-                            </goals>
-                            <phase>process-resources</phase>
-                        </execution>
-                    </executions>
-                    <dependencies>
-                        <dependency>
-                            <groupId>com.tenacity</groupId>
-                            <artifactId>shared-resources</artifactId>
-                            <version>${shared-resources.version}</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-assembly-plugin</artifactId>
-                    <configuration>
-                        <finalName>${project.artifactId}</finalName>
-                        <appendAssemblyId>false</appendAssemblyId>
-                        <descriptors>${project.build.directory}/classes/assembly.xml</descriptors>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <id>make-assembly</id>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>single</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-                <plugin>
-                    <groupId>org.mybatis.generator</groupId>
-                    <artifactId>mybatis-generator-maven-plugin</artifactId>
-                    <configuration>
-                        <!-- 是否覆盖 -->
-                        <overwrite>true</overwrite>
-                        <!--允许移动生成的文件 -->
-                        <verbose>true</verbose>
-                        <!-- 自动生成的配置,${basedir}表示项目根目录 ,configurationFile默认在resource目录下-->
-                        <!--<configurationFile>${basedir}/src/main/resources/generatorConfig.xml</configurationFile>-->
-                    </configuration>
-                    <dependencies>
-                        <!--mysql驱动包-->
-                        <dependency>
-                            <groupId>mysql</groupId>
-                            <artifactId>mysql-connector-java</artifactId>
-                            <version>${mysql-connector-java.version}</version>
-                            <scope>runtime</scope>
-                        </dependency>
-                        <dependency>
-                            <groupId>com.chrm</groupId>
-                            <artifactId>mybatis-generator-lombok-plugin</artifactId>
-                            <version>${mybatis-generator-lombok-plugin.version}</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${compiler.plugin.version}</version>
-                    <configuration>
-                        <source>${maven.compiler.source}</source>
-                        <target>${maven.compiler.target}</target>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+
         <plugins>
             <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -180,6 +100,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
                 <configuration>
                     <attach>true</attach>
                 </configuration>
