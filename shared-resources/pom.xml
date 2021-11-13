@@ -7,6 +7,19 @@
     <artifactId>shared-resources</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
+    <distributionManagement>
+        <repository>
+            <id>rdc-releases</id>
+            <name>rdc Releases Repository</name>
+            <url>https://packages.aliyun.com/maven/repository/2155499-release-62Mrky/</url>
+        </repository>
+        <snapshotRepository>
+            <id>rdc-snapshots</id>
+            <name>rdc Snapshots Repository</name>
+            <url>https://packages.aliyun.com/maven/repository/2155499-snapshot-GJCqmT/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <build>
         <plugins>
             <plugin>
